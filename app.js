@@ -1,7 +1,8 @@
 const squares = document.querySelectorAll(".square");
 const resetButton = document.getElementById("reset-button");
 
-let isTrue = true;
+let isTrue = true; //to keep adapt the x and o turn
+let move = 0; //to keep tracking the game for the draw functionality
 
 const winningPattern = [
   [0, 1, 2],
@@ -24,11 +25,14 @@ squares.forEach((box) => {
         box.innerText = "O";
         isTrue = !isTrue;
       }
+      move++;
     }
 
     const winner = checkWinner();
     if (winner != null) {
       alert(`Player ${winner} wins!`);
+    } else if (move === squares.length) {
+      alert(`It's a draw! Good job!`);
     }
   });
 });
@@ -38,6 +42,7 @@ function resetGame() {
     box.innerText = "";
   });
   isTrue = true;
+  move = 0;
 }
 
 function checkWinner() {
