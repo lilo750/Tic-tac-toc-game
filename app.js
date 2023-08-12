@@ -31,8 +31,10 @@ squares.forEach((box) => {
     const winner = checkWinner();
     if (winner != null) {
       alert(`Player ${winner} wins!`);
+      resetGame();
     } else if (move === squares.length) {
       alert(`It's a draw! Good job!`);
+      resetGame();
     }
   });
 });
